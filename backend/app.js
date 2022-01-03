@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+const path = require('path')
 
 app.use(express.json())
 
+const userRoutes = require('./routes/user')
 const saucesRoutes = require('./routes/sauces')
 
 mongoose.connect('mongodb+srv://woden98:123e456e@cluster0.p4wwi.mongodb.net/Piiquante?retryWrites=true&w=majority',
@@ -19,6 +21,9 @@ mongoose.connect('mongodb+srv://woden98:123e456e@cluster0.p4wwi.mongodb.net/Piiq
     next();
   });
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+app.use('/api/auth', userRoutes)
 app.use('/api/sauces', saucesRoutes)
 
 module.exports = app;
