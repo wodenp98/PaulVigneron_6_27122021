@@ -1,4 +1,4 @@
-const Sauce = require('../models/Sauce')
+const Sauce = require('../models/sauce')
 const fs = require('fs')
 
 
@@ -13,7 +13,7 @@ exports.createSauce = (req, res, next) => {
 	})
 	sauce
 		.save()
-		.then(() => res.status(201).json({ message: 'Sauce enregistré !' }))
+		.then(() => res.status(201).json({ message: 'Sauce enregistrée !' }))
 		.catch((error) => res.status(400).json({ message: error }))
 }
 
