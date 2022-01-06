@@ -1,3 +1,0 @@
-# tous les fichiers de ce dossier seront ignoré à l'exception de ce seul fichier .gitignore
-*
-!.gitignore
