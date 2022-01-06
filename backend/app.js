@@ -4,7 +4,13 @@ const app = express();
 const helmet = require('helmet')
 require('dotenv').config()
 
+app.use(helmet())
 
+app.use((req, res, next) => {
+  res.removeHeader('Cross-Origin-Resource-Policy')
+  res.removeHeader('Cross-Origin-Embedder-Policy')
+  next()
+})
 
 const path = require('path')
 
