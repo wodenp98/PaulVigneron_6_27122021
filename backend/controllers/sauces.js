@@ -89,11 +89,10 @@ exports.voteOneSauce = (req, res) => {
 			console.log('Statut : ', like)
 
 			// case "n" : n valeur au click
-			// += : j'ajoute || -= je retire
-			// filter : montre les id différents de l'userId
 			switch (like) {
 				// like +1
 				case 1:
+					// += : j'ajoute
 					sauce.likes += 1
 					sauce.usersLiked.push(userId)
 					break
@@ -101,7 +100,9 @@ exports.voteOneSauce = (req, res) => {
 				// annule -1
 				case 0:
 					if (userLike) {
+						// -= je retire
 						sauce.likes -= 1
+						// filter : montre les id différents de l'userId
 						sauce.usersLiked = sauce.usersLiked.filter((id) => id !== userId)
 					}
 					if (userDislike) {
